@@ -23,5 +23,12 @@
     "url": "https://github.com/nandan858/zomato-clone-10567/issues"
   },
   "homepage": "https://github.com/nandan858/zomato-clone-10567#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "nodemon": "^2.0.20"
+  },
   "description": ""
 }
