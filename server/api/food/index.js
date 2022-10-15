@@ -2,7 +2,7 @@ import express from 'express';
 
 import { FoodModel } from '../../database/food';
 
-const Router = expess.Router();
+const Router = express.Router();
 /*
 *Route      /:_id
 *Des        Get food based on id
