@@ -2,7 +2,7 @@ import express from 'express';
 
 import { RestaurantModel } from "../../database/allModel";
 
-const Router = expess.Router();
+const Router = express.Router();
 /*
 *Route      /:
 *Des        Get all the restaurant details based on he city
