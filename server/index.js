@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import passport from "passport";
 import session from "express-session";
 
+import Image from './api/image';
+
 //Private route authorization config
 import privateRouteConfig from "./config/route.config";
 
@@ -26,6 +28,7 @@ zomato.use(express.json());
 zomato.use(session({ secret: process.env.JWTSECRET }));
 zomato.use(passport.initialize());
 zomato.use(passport.session());
+zomato.use('/image', Image);
 
 zomato.get('/', (req, res) => {
     res.json({

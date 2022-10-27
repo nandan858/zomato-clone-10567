@@ -20,6 +20,8 @@ var _restaurant = _interopRequireDefault(require("./api/restaurant"));
 
 var _user = _interopRequireDefault(require("./api/user"));
 
+var _menu = _interopRequireDefault(require("./api/menu"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Private route authorization config
@@ -45,7 +47,7 @@ zomato.use("/auth", _index.default);
 zomato.use("/food", _food.default);
 zomato.use("/restaurant", _restaurant.default);
 zomato.use("/user", _user.default);
-zomato.use("/menu", Menu);
+zomato.use("/menu", _menu.default);
 const PORT = 4000;
 zomato.listen(PORT, () => {
   (0, _connection.default)().then(() => {
