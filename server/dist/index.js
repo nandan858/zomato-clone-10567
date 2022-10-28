@@ -8,6 +8,8 @@ var _passport = _interopRequireDefault(require("passport"));
 
 var _expressSession = _interopRequireDefault(require("express-session"));
 
+var _image = _interopRequireDefault(require("./api/image"));
+
 var _route = _interopRequireDefault(require("./config/route.config"));
 
 var _connection = _interopRequireDefault(require("./database/connection"));
@@ -22,10 +24,14 @@ var _user = _interopRequireDefault(require("./api/user"));
 
 var _menu = _interopRequireDefault(require("./api/menu"));
 
+var _google = _interopRequireDefault(require("./config/google.config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Private route authorization config
 //Database Connection
+(0, _google.default)(_passport.default);
+
 _dotenv.default.config(); //adding additional passport configuration
 
 
@@ -37,6 +43,7 @@ zomato.use((0, _expressSession.default)({
 }));
 zomato.use(_passport.default.initialize());
 zomato.use(_passport.default.session());
+zomato.use('/image', _image.default);
 zomato.get('/', (req, res) => {
   res.json({
     message: "Server is running"

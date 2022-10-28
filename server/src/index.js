@@ -16,6 +16,11 @@ import Food from "./api/food";
 import Restaurant from "./api/restaurant";
 import User from './api/user';
 import Menu from './api/menu';
+
+import googleAuthConfig from './config/google.config';
+
+googleAuthConfig(passport);
+
 dotenv.config();
 
 //adding additional passport configuration
