@@ -22,7 +22,7 @@ const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
           <>
             <div
               onClick={() => setIsDropdownOpen((prev) => !prev)}
-              className="border border-gray-300 text-zomato-400 w-12 h-12 rounded-full"
+              className="border border-gray-300 text-zomato-400 w-9 h-9 rounded-full"
             >
               <img
                 src="https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
@@ -31,7 +31,7 @@ const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
               />
             </div>
             {isDropdownOpen && (
-              <div className="absolute shadow-lg py-3 -bottom-16 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
+              <div className="absolute shadow-lg py-3 -bottom-14 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
                 <button>Sign Out</button>
               </div>
             )}
@@ -106,7 +106,7 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
               />
             </div>
             {isDropdownOpen && (
-              <div className="absolute shadow-lg py-3 -bottom-16 -right-0 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
+              <div className="absolute shadow-lg py-3 -bottom-14 -right-0 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
                 <button>Sign Out</button>
               </div>
             )}
@@ -137,8 +137,9 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const user = {
-    fullName: "Nandan",
+    fullName: "Aditya",
   };
+
   return (
     <>
       <nav className="p-4 lg:py-2 flex bg-white shadow-md lg:shadow-none lg:border-b-2 border-gray-100 w-full items-center">
