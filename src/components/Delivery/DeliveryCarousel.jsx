@@ -45,18 +45,7 @@ const DeliveryCarousel = () => {
         image:"https://b.zmtcdn.com/data/o2_assets/fc641efbb73b10484257f295ef0b9b981634401116.png",
         title:"Sandwich",
     },
-    // {
-    //     image:"",
-    //     title:"",
-    // },
-    // {
-    //     image:"",
-    //     title:"",
-    // },
-    // {
-    //     image:"",
-    //     title:"",
-    // },
+   
   ]
   const slideConfig = {
     slidesPerView: 1,
@@ -87,15 +76,15 @@ const DeliveryCarousel = () => {
     <h1 className='mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold mb-5'>
         Inspiration for your first Order
     </h1>
-    <div className='lg:hidden grid sm:grid-cols-3 md:grid-cols-4 gap-3 lg:gap-0 '>
-        {categories.map((food) => (
-            <DeliveryCategoryCard {...food} />
+    <div className='lg:hidden grid grid-cols-3 md:grid-cols-4 gap-3 lg:gap-0 '>
+        {categories.map((food, index) => (
+            <DeliveryCategoryCard key={index} {...food} />
         ))}
     </div>
     <div className='hidden lg:block'>
         <Swiper {...slideConfig}>
-         {categories.map((food) => (
-            <SwiperSlide>
+         {categories.map((food, index) => (
+            <SwiperSlide key={index}>
                 <DeliveryCategoryCard {...food} />
             </SwiperSlide>
          ))}

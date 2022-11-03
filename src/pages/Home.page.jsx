@@ -14,7 +14,7 @@ const Home = () => {
   const {type} = useParams();
   return (
     <>
-    <div className="my-5">
+    <div className="my-5 mb-20 md:mb-15">
     {type=== 'delivery' && <Delivery/>}
     {type=== 'dining' && <Dining/>}
     {type=== 'night' && <NightLife/>}

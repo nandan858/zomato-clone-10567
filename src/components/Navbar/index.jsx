@@ -77,7 +77,7 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
           </span>
           <input
             type="text"
-            placeholder="Delhi NCR"
+            placeholder="Bengaluru"
             className="w-full focus:outline-none"
           />
           <IoMdArrowDropdown />
