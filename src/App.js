@@ -11,7 +11,7 @@ import Restaurant from "./pages/Restaurant.page";
 import Overview from "./components/Restaurant/Overview";
 import OrderOnline from "./components/Restaurant/OrderOnline";
 import Menu from "./components/Restaurant/Menu";
-import Reviews from "./components/Restaurant/Reviews";
+import Reviews from "./components/Restaurant/Review";
 import Photos from "./components/Restaurant/Photos";
 
 function App() {
