@@ -31,7 +31,7 @@ const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
               />
             </div>
             {isDropdownOpen && (
-              <div className="absolute shadow-lg py-3 -bottom-14 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
+              <div className="absolute shadow-lg py-3 -bottom-16 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
                 <button>Sign Out</button>
               </div>
             )}
@@ -106,7 +106,7 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
               />
             </div>
             {isDropdownOpen && (
-              <div className="absolute shadow-lg py-3 -bottom-14 -right-0 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
+              <div className="absolute shadow-lg py-3 -bottom-16 -right-0 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200">
                 <button>Sign Out</button>
               </div>
             )}
