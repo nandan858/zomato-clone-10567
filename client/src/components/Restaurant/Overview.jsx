@@ -18,12 +18,13 @@ const Overview = () => {
     _id: "124ksjf435245jv34fg3",
     isPro: true,
     isOff: true,
-    name: "Nathu's Sweets",
+    name: "Biriyani Blues",
     restaurantReviewValue: "3.7",
     cuisine: [
-      "Mithai",
       "South Indian",
       "Chinese",
+      "Biriyani",
+      "Kebab",
       "Street Food",
       "Fast Food",
       "Desserts",
@@ -37,7 +38,20 @@ const Overview = () => {
     "https://b.zmtcdn.com/data/menus/931/931/8d6623791860b054953b6c2c14d61bcb.jpg",
     "https://b.zmtcdn.com/data/menus/931/931/6d462a04051c0eabb0067149aa84cc64.jpg",
   ]);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([
+    {
+      rating: 3.5,
+      isRestaurantReview: false,
+      createdAt: "Tue Nov 08 2022 11:08:19 GMT+0530 (India Standard Time)",
+      reviewText: "Nice Experience"
+    },
+    {
+      rating: 4.5,
+      isRestaurantReview: false,
+      createdAt: "Tue Nov 08 2022 09:30:19 GMT+0530 (India Standard Time)",
+      reviewText: "Very Good Experience"
+    }
+  ]);
   const { id } = useParams;
 
   const slideConfig = {
@@ -115,14 +129,14 @@ const Overview = () => {
         <div className="flex flex-col-reverse">
           <div className="my-4">
             <h4 className="text-lg font-medium">
-              Rate your delivery experience
+              {restaurant.name} Reviews
             </h4>
-            <ReactStars
+            {/* <ReactStars
               count={5}
               onChange={(newRating) => console.log(newRating)}
               size={24}
               activeColor="#ffd700"
-            />
+            /> */}
             {reviews.map((review, index) => (
               <ReviewCard {...review} key={index} />
             ))}
@@ -159,8 +173,12 @@ const Overview = () => {
           </div>
 
           <div className="my-4 w-full md:hidden flex flex-col gap-4">
-          <MapView title="McDonald's" phno='+911234512345' mapLocation = {getLatLong("12.93006183582533, 77.59805801090486")}
-      address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
+          <MapView 
+          title="McDonald's" 
+          phno='+911234512345' 
+          mapLocation = {getLatLong("12.930288992056179, 77.58311132165434")}
+          latAndLong={"12.930288992056179, 77.58311132165434"}
+          address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
       />
           </div>
         </div>
@@ -169,8 +187,12 @@ const Overview = () => {
         style={{ height: "fit-content" }}
         className="hidden md:flex md:w-4/12 sticky rounded-xl top-20 bg-white p-3 shadow-md flex-col gap-4"
       >
-         <MapView title="McDonald's" phno='+911234512345' mapLocation = {getLatLong("12.93006183582533, 77.59805801090486")}
-      address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
+         <MapView 
+         title="McDonald's" 
+         phno='+911234512345' 
+         mapLocation = {getLatLong("12.930288992056179, 77.58311132165434")}
+         latAndLong={"12.930288992056179, 77.58311132165434"}
+        address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
       />
       </aside>
     </div>

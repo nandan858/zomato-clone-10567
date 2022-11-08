@@ -23,12 +23,14 @@ function App() {
         <Route path="/:type" element={<Home />} />
         {/* <Route path="/restaurant/:id" element={<RedirectRestaurant />} /> */}
         <Route path="/google/:token" element={<GoogleAuth />} />
-        <Route path="/restaurant/:id" 
-        element={
-        <RestaurantLayout>
-          <Restaurant />
-          </RestaurantLayout>
-        }>
+        <Route
+          path="/restaurant/:id"
+          element={
+            <RestaurantLayout>
+              <Restaurant />
+            </RestaurantLayout>
+          }
+        >
           <Route path="overview" element={<Overview />} />
           <Route path="order-online" element={<OrderOnline />} />
           <Route path="reviews" element={<Reviews />} />
