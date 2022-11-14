@@ -13,7 +13,7 @@ const Menu = () => {
     "https://b.zmtcdn.com/data/menus/931/931/6d462a04051c0eabb0067149aa84cc64.jpg",
   ]);
 
-  return <div>
+  return <div className="flex flex-wrap gap-3">
     <MenuCollection
     menuTitle='Menu'
     pages={menus.length}
