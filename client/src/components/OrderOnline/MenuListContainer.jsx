@@ -17,6 +17,6 @@ const MenuListContainer = (props) => {
       </div>
     </>
   );
-};
+}; 
 
 export default MenuListContainer;

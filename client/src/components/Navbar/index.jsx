@@ -9,7 +9,7 @@ import SignUp from "../Auth/Signup";
 import SignIn from "../Auth/Signin";
 
 
-const MobileNav = ({
+const MobileNav = ({ 
   user, 
   isDropdownOpen, 
   setIsDropdownOpen,
