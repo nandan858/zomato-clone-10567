@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import passport from "passport";
 import session from "express-session";
+import cors from 'cors'
+import helmet from 'helmet'
 
 import Image from './api/image';
 
@@ -29,11 +31,15 @@ privateRouteConfig(passport);
 const zomato = express();
 
 
+zomato.use(cors({origin : "http://localhost:3000"}));
+zomato.use(helmet());
+
 zomato.use(express.json());
 zomato.use(session({ secret: process.env.JWTSECRET }));
 zomato.use(passport.initialize());
 zomato.use(passport.session());
 zomato.use('/image', Image);
+
 
 zomato.get('/', (req, res) => {
     res.json({
