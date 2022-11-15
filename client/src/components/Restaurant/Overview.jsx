@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
-import ReactStars from "react-rating-stars-component";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
@@ -13,25 +12,23 @@ import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
 import ReviewCard from "../Reviews/ReviewCard";
 import MapView from "./MapView";
 
+// redux
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 const Overview = () => {
-  const [restaurant, setRestaurant] = useState({
-    _id: "124ksjf435245jv34fg3",
-    isPro: true,
-    isOff: true,
-    name: "Biriyani Blues",
-    restaurantReviewValue: "3.7",
-    cuisine: [
-      "South Indian",
-      "Chinese",
-      "Biriyani",
-      "Kebab",
-      "Street Food",
-      "Fast Food",
-      "Desserts",
-      "North Indian",
-    ],
-    averageCost: "450",
-  });
+  const [restaurant, setRestaurant] = useState({ cuisine: [] });
+
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
+
+  useEffect(() => {
+    if (reduxState) {
+      setRestaurant(reduxState);
+    }
+  }, [reduxState]);
+
   const [menuImages, setMenuImages] = useState([
     "https://b.zmtcdn.com/data/menus/931/931/d40e86a957d1ed6e6fabe5a67a161904.jpg",
     "https://b.zmtcdn.com/data/menus/931/931/36f8a3b9e5dbf6435f903c9a8745bcc8.jpg",
@@ -42,15 +39,15 @@ const Overview = () => {
     {
       rating: 3.5,
       isRestaurantReview: false,
-      createdAt: "Tue Nov 08 2022 11:08:19 GMT+0530 (India Standard Time)",
-      reviewText: "Nice Experience"
+      createdAt: "Fri Oct 14 2022 20:20:34 GMT+0530 (India Standard Time)",
+      reviewText: "Very bad experience.",
     },
     {
       rating: 4.5,
       isRestaurantReview: false,
-      createdAt: "Tue Nov 08 2022 09:30:19 GMT+0530 (India Standard Time)",
-      reviewText: "Very Good Experience"
-    }
+      createdAt: "Fri Oct 14 2022 20:19:34 GMT+0530 (India Standard Time)",
+      reviewText: "Very good experience.",
+    },
   ]);
   const { id } = useParams;
 
@@ -128,9 +125,7 @@ const Overview = () => {
 
         <div className="flex flex-col-reverse">
           <div className="my-4">
-            <h4 className="text-lg font-medium">
-              {restaurant.name} Reviews
-            </h4>
+            <h4 className="text-lg font-medium">{restaurant.name} Reviews</h4>
             {/* <ReactStars
               count={5}
               onChange={(newRating) => console.log(newRating)}
@@ -146,57 +141,69 @@ const Overview = () => {
             <h4 className="text-lg font-medium">Similar Restaurants</h4>
             <div>
               <Swiper {...slideConfig}>
-              <SwiperSlide>
-            <MenuSimilarRestaurantCard 
-            image="https://b.zmtcdn.com/data/pictures/chains/0/59680/030bb0ac1ded5f7e1b6558b5289c4b45_o2_featured_v2.jpg"
-            title="Paradise Biryani"/>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <MenuSimilarRestaurantCard 
-            image="https://b.zmtcdn.com/data/pictures/chains/6/18613656/210f70f0baecddad033670d733634d07_o2_featured_v2.jpg"
-            title="Sharief Bhai"/>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <MenuSimilarRestaurantCard 
-            image="https://b.zmtcdn.com/data/pictures/8/19882628/c1fc8a4e56027805965c694bb752f089_o2_featured_v2.jpg"
-            title="Sri Udupi Food Hub"/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <MenuSimilarRestaurantCard 
-            image="https://b.zmtcdn.com/data/pictures/chains/0/55400/dece41a2ffa479cc6f19d5632f180b2d_o2_featured_v2.jpg"
-            title="Paakashala"/>
-          </SwiperSlide>
+                <SwiperSlide>
+                  <MenuSimilarRestaurantCard
+                    image="https://b.zmtcdn.com/data/pictures/chains/3/307893/f606e2cc225f298f77b0bf9673e96dbe_featured_v2.jpg"
+                    title="Bikkgane Biryani"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <MenuSimilarRestaurantCard
+                    image="https://b.zmtcdn.com/data/pictures/chains/2/18363082/029c99fa45772a9c162983d13861d864_featured_v2.jpg"
+                    title="Behrouz Biryani"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <MenuSimilarRestaurantCard
+                    image="https://b.zmtcdn.com/data/pictures/chains/4/844/c2aff8d94b55d820df98053ce1b8d9cb_featured_v2.jpg"
+                    title="Khan Chacha"
+                  />
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>
 
           <div className="my-4 w-full md:hidden flex flex-col gap-4">
-          <MapView 
-          title="McDonald's" 
-          phno='+911234512345' 
-          mapLocation = {getLatLong("12.930288992056179, 77.58311132165434")}
-          latAndLong={"12.930288992056179, 77.58311132165434"}
-          address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
-      />
+            <MapView
+              title="McDonald's"
+              phno="+193423542345"
+              mapLocation={getLatLong("28.64121406271755, 77.21955482132051")}
+              address="H-5/6, Plaza Building, Connaught Place, New Delhi"
+            />
           </div>
         </div>
       </div>
       <aside
         style={{ height: "fit-content" }}
-        className="hidden md:flex md:w-4/12 sticky rounded-xl top-20 bg-white p-3 shadow-md flex-col gap-4"
+        className="hidden md:flex md:w-4/12 sticky rounded-xl top-20 bg-white py-4 px-4 shadow-md flex-col gap-4"
       >
-         <MapView 
-         title="McDonald's" 
-         phno='+911234512345' 
-         mapLocation = {getLatLong("12.930288992056179, 77.58311132165434")}
-         latAndLong={"12.930288992056179, 77.58311132165434"}
-        address="1218/A, 34th Cross, 4th T Block, Jayanagar, Bangalore"
-      />
+        <MapView
+          title="McDonald's"
+          phno="+193423542345"
+          mapLocation={getLatLong("28.64121406271755, 77.21955482132051")}
+          latAndLong={"28.64121406271755, 77.21955482132051"}
+          address="H-5/6, Plaza Building, Connaught Place, New Delhi"
+        />
       </aside>
     </div>
   );
 };
 
 export default Overview;
+
+// _id: "124ksjf435245jv34fg3",
+//     isPro: true,
+//     isOff: true,
+//     name: "Biriyani Blues",
+//     restaurantReviewValue: "3.7",
+//     cuisine: [
+//       "South Indian",
+//       "Chinese",
+//       "Biriyani",
+//       "Kebab",
+//       "Street Food",
+//       "Fast Food",
+//       "Desserts",
+//       "North Indian",
+//     ],
+//     averageCost: "450",

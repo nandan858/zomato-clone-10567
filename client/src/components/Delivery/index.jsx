@@ -1,40 +1,23 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 
 //components
 import DeliveryCarousel from './DeliveryCarousel';
 import RestaurantCard from "../RestaurantCard";
 
+//redux
+import { useSelector } from 'react-redux';
+
+
 const Delivery = () => {
 
-  const [restaurantList, setrestaurantList] = useState([
-    {
-      _id: "124ksjf4344555jc56fg5",
-      isPro: true,
-      isOff: true,
-      name: "Empire Restaurant",
-      restaurantReviewValue: "4.0",
-      cuisine: ["North Indian", "Biryani", "Kebab"," Chinese", "South Indian", "Mughlai", "Beverages"],
-      averageCost : "200",
-    },
-    {
-      _id: "124ksjf435245jc56fg5",
-      isPro: true,
-      isOff: false,
-      name: "Domino's Pizza",
-      restaurantReviewValue: "3.6",
-      cuisine: ["Pizza","Fast Food", "Desserts","Beverages"],
-      averageCost : "300",
-    },
-    {
-      _id: "124ksjf4357745jc56fg5",
-      isPro: true,
-      isOff: true,
-      name: "Aromas Of Biryani",
-      restaurantReviewValue: "4.0",
-      cuisine: ["Biryani", "North Indian", "Chinese", "Mughlai", "Kebab", "Seafood", "Ice Cream", "Beverages"],
-      averageCost : "300",
-    },
-  ]);
+  const [restaurantList, setrestaurantList] = useState([]);
+
+  const reduxState = useSelector((globalState) => globalState.restaurant.restaurants)
+
+  useEffect(() => {
+    reduxState && setrestaurantList(reduxState);
+  },[reduxState]);
+  
   return (
   <>
     <DeliveryCarousel/>
@@ -51,3 +34,31 @@ const Delivery = () => {
 }
 
 export default Delivery
+
+// {
+//   _id: "124ksjf4344555jc56fg5",
+//   isPro: true,
+//   isOff: true,
+//   name: "Empire Restaurant",
+//   restaurantReviewValue: "4.0",
+//   cuisine: ["North Indian", "Biryani", "Kebab"," Chinese", "South Indian", "Mughlai", "Beverages"],
+//   averageCost : "200",
+// },
+// {
+//   _id: "124ksjf435245jc56fg5",
+//   isPro: true,
+//   isOff: false,
+//   name: "Domino's Pizza",
+//   restaurantReviewValue: "3.6",
+//   cuisine: ["Pizza","Fast Food", "Desserts","Beverages"],
+//   averageCost : "300",
+// },
+// {
+//   _id: "124ksjf4357745jc56fg5",
+//   isPro: true,
+//   isOff: true,
+//   name: "Aromas Of Biryani",
+//   restaurantReviewValue: "4.0",
+//   cuisine: ["Biryani", "North Indian", "Chinese", "Mughlai", "Kebab", "Seafood", "Ice Cream", "Beverages"],
+//   averageCost : "300",
+// },
